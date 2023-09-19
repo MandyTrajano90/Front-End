@@ -10,7 +10,6 @@ export async function getCategories() {
   }
 }
 
-
 //       "id": "MLB5672",
 //       "name": "Acessórios para Veículos"
 //   },
