@@ -27,6 +27,7 @@ function Cards({ product }: { product: CardType }) {
       permalink: product.permalink,
       price: product.price,
       thumbnail: product.thumbnail,
+      quantity: 1,
     };
 
     // Verifica se já há itens no carrinho no localStorage
