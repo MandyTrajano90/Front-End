@@ -10,8 +10,7 @@ export async function getCategories() {
   }
 }
 
-// [
-//   {
+
 //       "id": "MLB5672",
 //       "name": "Acessórios para Veículos"
 //   },
@@ -25,7 +24,7 @@ export async function getProductsFromCategoryAndQuery(QUERY?: string) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Erro função getProductsFromCategoryAndQuery', error);
+    console.error('Erro funço getProductsFromCategoryAndQuery', error);
     throw error;
   }
 }
