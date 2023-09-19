@@ -4,7 +4,7 @@ function Header() {
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/car" data-testid="shopping-cart-button">Carrinho de Compras</NavLink>
+      <NavLink data-testid="shopping-cart-button" to="/car">Carrinho de Compras</NavLink>
     </nav>
 
   );

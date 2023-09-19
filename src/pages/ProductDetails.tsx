@@ -1,29 +1,72 @@
-import styles from '../cards/Card.module.css';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import styles from '../components/cards/Card.module.css';
+import { getProductById } from '../services/api';
 
-type DetailsType = {
-  id: string,
-  title: string,
-  price: number,
-  thumbnail: string
-};
+function ProductDetails() {
+  const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    id: '',
+    title: '',
+    thumbnail: '',
+    price: 99.99,
+    category_id: '',
+  });
 
-function ProductDetails({ product }: { product: DetailsType }) {
-  // if (!product) {
+  const { id } = useParams();
+  // if (!id) {
   //   return <div>Carregando...</div>;
   // }
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getProductById(id);
+        setDetails(data);
+      } catch (error) {
+        console.error('Erro ao buscar categorias listadas', error);
+      }
+    }
+    fetchData();
+  }, [id]);
+
+  const handleClick = () => {
+    navigate('/car');
+  };
+
   return (
-    <div className={ styles.container } key={ product.id } data-testid="product">
-      <img
-        data-testid="product-detail-image"
-        src={ product.thumbnail }
-        alt={ product.title }
-      />
-      <p className={ styles.title } data-testid="product-detail-name">{product.title}</p>
-      <p className={ styles.info }>{product.id}</p>
-      <p data-testid="product-detail-price" className={ styles.info }>{product.price}</p>
-      <button data-testid="shopping-cart-button">Comprar Produto</button>
-    </div>
+    <>
+      <h1>
+        `Deu certo
+        {id}
+        `
+      </h1>
+      <div className={ styles.container } key={ details.id } data-testid="product">
+        <img
+          data-testid="product-detail-image"
+          src={ details.thumbnail }
+          alt={ details.title }
+        />
+        <p
+          className={ styles.title }
+          data-testid="product-detail-name"
+        >
+          {details.title}
+        </p>
+        <p
+          className={ styles.info }
+        >
+          {details.id}
+        </p>
+        <p
+          data-testid="product-detail-price"
+          className={ styles.info }
+        >
+          {details.price}
+        </p>
+        <button onClick={ handleClick }>Comprar Produto</button>
+      </div>
+    </>
   );
 }
 
