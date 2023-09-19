@@ -10,8 +10,12 @@ export async function getCategories() {
   }
 }
 
+// [
+//   {
 //       "id": "MLB5672",
 //       "name": "Acessórios para Veículos"
+//   },
+// ]
 
 // https://api.mercadolibre.com/sites/MLB/search?category=$CATEGORY_ID
 // export async function getProductsFromCategoryAndQuery(/* categoryId, query */) {
@@ -21,7 +25,7 @@ export async function getProductsFromCategoryAndQuery(QUERY?: string) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Erro funço getProductsFromCategoryAndQuery', error);
+    console.error('Erro função getProductsFromCategoryAndQuery', error);
     throw error;
   }
 }
@@ -49,5 +53,3 @@ export async function getProductById(PRODUCT_ID?: string) {
     throw error;
   }
 }
-
-// testando
