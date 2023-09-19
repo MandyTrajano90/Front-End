@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Card.module.css';
-import { getProductById } from '../../services/api';
 
 type CardType = {
   id: string,
@@ -11,23 +10,14 @@ type CardType = {
 };
 
 function Cards({ product }: { product: CardType }) {
-  const [productDetail, setProductDetail] = useState({
-    id: '',
-    title: '',
-    price: 99.99,
-    thumbnail: '',
+  const navigate = useNavigate();
 
-  });
+  function handleClick() {
+    navigate(`/details/${product.id}`);
+    // setProductDetail(product.id)
 
-  const fetchData = async () => {
-    try {
-      const data = await getProductById(product.id);
-      setProductDetail(data);
-      console.log(productDetail);
-    } catch (error) {
-      console.error('Erro ao buscar detalhes do produto', error);
-    }
-  };
+    console.log(product.id);
+  }
 
   return (
 
@@ -37,7 +27,12 @@ function Cards({ product }: { product: CardType }) {
       <p className={ styles.info }>{product.id}</p>
       <p className={ styles.info }>{product.permalink}</p>
       <p className={ styles.info }>{product.price}</p>
-      <button onClick={ fetchData }>clique aqui</button>
+      <button
+        onClick={ handleClick }
+        data-testid="product-detail-link"
+      >
+        clique aqui
+      </button>
     </div>
 
   );
