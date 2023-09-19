@@ -12,8 +12,6 @@ export async function getCategories() {
 
 //       "id": "MLB5672",
 //       "name": "Acessórios para Veículos"
-//   },
-// ]
 
 // https://api.mercadolibre.com/sites/MLB/search?category=$CATEGORY_ID
 // export async function getProductsFromCategoryAndQuery(/* categoryId, query */) {
