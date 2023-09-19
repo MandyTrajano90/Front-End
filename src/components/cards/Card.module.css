@@ -1,0 +1,48 @@
+/* Card.css */
+
+/* Estilos para o contêiner do card */
+.container {
+  align-items: flex-start; /* Alinhe os cards no topo */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  height: 300px;
+  justify-content: space-between; /* Distribua o espaço entre os cards */
+  margin: 16px;
+  padding: 16px;
+  width: 300px;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-bottom: 16px; /* Espaçamento inferior entre os cards */
+  padding: 16px;
+  text-align: center;
+}
+
+.card:last-child {
+  margin-right: 0; /* Remova a margem à direita do último card da linha */
+}
+
+/* Estilos para o título do produto */
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Estilos para informações adicionais, como ID, permalink e preço */
+.info {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Estilos para a imagem do produto */
+.image {
+  height: auto;
+  margin-top: 8px;
+  max-width: 100%;
+}
