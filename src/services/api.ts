@@ -49,3 +49,5 @@ export async function getProductById(PRODUCT_ID?: string) {
     throw error;
   }
 }
+
+// testando
