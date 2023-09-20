@@ -30,6 +30,23 @@ function ProductDetails() {
     fetchData();
   }, [id]);
 
+  const handleAddToCart = () => {
+    // Recupere o carrinho do localStorage (se existir)
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    // Adicione o produto atual ao carrinho
+    cart.push({
+      id: details.id,
+      title: details.title,
+      thumbnail: details.thumbnail,
+      price: details.price,
+      quantity: 1, // Você pode ajustar a quantidade conforme necessário
+    });
+
+    // Salve o carrinho atualizado no localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
+
   const handleClick = () => {
     navigate('/car');
   };
@@ -64,7 +81,10 @@ function ProductDetails() {
         >
           {details.price}
         </p>
-        <button onClick={ handleClick }>Comprar Produto</button>
+        <button onClick={ handleAddToCart } data-testid="product-detail-add-to-cart">
+          Adicionar ao Carrinho
+        </button>
+        <button onClick={ handleClick }>Ir Para o Carrinho</button>
       </div>
     </>
   );

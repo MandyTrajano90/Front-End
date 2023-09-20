@@ -19,6 +19,32 @@ function Cards({ product }: { product: CardType }) {
     console.log(product.id);
   }
 
+  function handleAddToCart() {
+    // Cria um objeto com as informações do produto
+    const cartItem = {
+      id: product.id,
+      title: product.title,
+      permalink: product.permalink,
+      price: product.price,
+      thumbnail: product.thumbnail,
+      quantity: 1,
+    };
+
+    // Verifica se já há itens no carrinho no localStorage
+    const existingCart = localStorage.getItem('cart');
+
+    // Se não houver itens no carrinho, cria um novo array com o item atual
+    if (!existingCart) {
+      const newCart = [cartItem];
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    } else {
+      // Se já houver itens no carrinho, adiciona o item atual ao array existente
+      const parsedCart = JSON.parse(existingCart);
+      parsedCart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(parsedCart));
+    }
+  }
+
   return (
 
     <div className={ styles.container } key={ product.id } data-testid="product">
@@ -32,6 +58,9 @@ function Cards({ product }: { product: CardType }) {
         data-testid="product-detail-link"
       >
         clique aqui
+      </button>
+      <button onClick={ handleAddToCart } data-testid="product-add-to-cart">
+        Adicionar ao Carrinho
       </button>
     </div>
 
