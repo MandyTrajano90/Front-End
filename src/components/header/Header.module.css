@@ -1,0 +1,27 @@
+.container {
+  align-items: center;
+  background-color: blue;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  margin-top: 0;
+  padding: 2px 5px;
+  width: 100%;
+}
+
+.homeLink {
+  align-items: center;
+  color: lightcyan;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  margin-left: 20px;
+  text-decoration: none;
+  width: 80px;
+}
+
+.checkout {
+  margin-right: 20px;
+  width: 50px;
+}
+
