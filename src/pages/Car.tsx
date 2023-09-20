@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Interface para representar a estrutura de um item do carrinho
 interface CartItem {
@@ -11,11 +12,16 @@ interface CartItem {
 function Car() {
   // Recupere os produtos do carrinho do localStorage
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const items: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
     setCartItems(items);
   }, []);
+
+  const handleCheckoutClick = () => {
+    navigate('/checkout');
+  };
 
   const increaseQuantity = (index: number) => {
     const updatedCart = [...cartItems];
@@ -81,6 +87,12 @@ function Car() {
           ))}
         </div>
       )}
+      <button
+        onClick={ handleCheckoutClick }
+        data-testid="checkout-products"
+      >
+        Finalizar Compra
+      </button>
     </div>
   );
 }
