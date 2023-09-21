@@ -21,6 +21,7 @@
 }
 
 .checkout {
+  cursor: pointer;
   margin-right: 20px;
   width: 50px;
 }

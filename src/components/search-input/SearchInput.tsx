@@ -6,6 +6,7 @@ import {
 } from '../../services/api';
 
 import Cards from '../cards/Cards';
+import styles from './SearchInput.module.css';
 
 type Categories = {
   id: '',
@@ -63,51 +64,44 @@ function SearchInput() {
   // "thumbnail": "http://http2.mlstatic.com/D_975760-MLB41404418635_042020-I.jpg",
 
   return (
-    <>
-
-      <div>
-        <label>
-          Nome:
-          <input
-            value={ searchInput }
-            onChange={ (event) => setSearchInput(event.target.value) }
-            data-testid="query-input"
-          />
-        </label>
-
-        <button data-testid="query-button" onClick={ handleSearchButton }>Busca</button>
-
-        {productList.length < 1 && (
-          <h2 data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </h2>
-        )}
-
-      </div>
-
-      <div>
-        {productList.length > 0 && (
-          <ul>
-            {productList.map((product, index) => (
-              <Cards key={ index } product={ product } />
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <aside>
+    <div className={ styles.container }>
+      <aside className={ styles.aside }>
         <h2>Categorias</h2>
-        <ul>
-          <label htmlFor="categorias">
+        {categories.map((category) => (
+          <div key={ category.id } className={ styles.categories }>
+            <label
+              data-testid="category"
+              htmlFor={ category.id }
+              className={ styles.categories }
+            >
+              <input
+                type="radio"
+                data-testid="category"
+                value={ category.id }
+                id={ category.id }
+                onClick={ () => setCategoriesId(category.id) }
+                className={ styles.categories }
+              />
+              {category.name}
+            </label>
+          </div>
+        ))}
+        {/* <ul className={ styles.categories }>
+          <label htmlFor="categorias" className={ styles.categories }>
             {categories.map((category) => (
-              <li key={ category.id } data-testid="category">
-                <label>
+              <li
+                key={ category.id }
+                data-testid="category"
+                className={ styles.categories }
+              >
+                <label className={ styles.categories }>
                   <input
                     type="radio"
                     data-testid="category-checkbox"
                     name="categorias"
                     value={ category.id }
                     onClick={ () => setCategoriesId(category.id) }
+                    className={ styles.categories }
                   />
                   {' '}
                   {category.name}
@@ -115,10 +109,43 @@ function SearchInput() {
               </li>
             ))}
           </label>
-        </ul>
+        </ul> */}
       </aside>
+      <div className={ styles.searchCont }>
+        <label htmlFor="query-input">
+          <input
+            value={ searchInput }
+            onChange={ (event) => setSearchInput(event.target.value) }
+            data-testid="query-input"
+            placeholder="Produto"
+          />
+        </label>
 
-    </>
+        <button
+          data-testid="query-button"
+          onClick={ handleSearchButton }
+          className={ styles.btn }
+        >
+          Buscar
+        </button>
+
+        {productList.length < 1 && (
+          <h2 data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </h2>
+        )}
+
+        <div>
+          {productList.length > 0 && (
+            <ul>
+              {productList.map((product, index) => (
+                <Cards key={ index } product={ product } />
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
