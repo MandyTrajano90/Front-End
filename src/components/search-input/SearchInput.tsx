@@ -115,7 +115,7 @@ function SearchInput() {
         <div>
           {productList.length < 1 && (
             <h2 data-testid="home-initial-message" className={ styles.titleSearch }>
-              Digite algum termo de pesquisa ou escolha uma categoria
+              Digite algum termo de pesquisa ou escolha uma categoria.
             </h2>
           )}
 
