@@ -66,27 +66,8 @@ function SearchInput() {
   return (
     <div className={ styles.container }>
       <aside className={ styles.aside }>
-        <h2>Categorias</h2>
-        {categories.map((category) => (
-          <div key={ category.id } className={ styles.categories }>
-            <label
-              data-testid="category"
-              htmlFor={ category.id }
-              className={ styles.categories }
-            >
-              <input
-                type="radio"
-                data-testid="category"
-                value={ category.id }
-                id={ category.id }
-                onClick={ () => setCategoriesId(category.id) }
-                className={ styles.categories }
-              />
-              {category.name}
-            </label>
-          </div>
-        ))}
-        {/* <ul className={ styles.categories }>
+        <h2 className={ styles.title2 }>Categorias</h2>
+        <ul className={ styles.categories }>
           <label htmlFor="categorias" className={ styles.categories }>
             {categories.map((category) => (
               <li
@@ -109,7 +90,7 @@ function SearchInput() {
               </li>
             ))}
           </label>
-        </ul> */}
+        </ul>
       </aside>
 
       <div className={ styles.mainContainer }>
@@ -133,8 +114,8 @@ function SearchInput() {
         </div>
         <div>
           {productList.length < 1 && (
-            <h2 data-testid="home-initial-message">
-              Digite algum termo de pesquisa ou escolha uma categoria.
+            <h2 data-testid="home-initial-message" className={ styles.titleSearch }>
+              Digite algum termo de pesquisa ou escolha uma categoria
             </h2>
           )}
 
