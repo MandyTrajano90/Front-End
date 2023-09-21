@@ -111,38 +111,42 @@ function SearchInput() {
           </label>
         </ul> */}
       </aside>
-      <div className={ styles.searchCont }>
-        <label htmlFor="query-input">
+
+      <div className={ styles.mainContainer }>
+        <div className={ styles.search }>
           <input
             value={ searchInput }
             onChange={ (event) => setSearchInput(event.target.value) }
             data-testid="query-input"
-            placeholder="Produto"
+            type="text"
+            placeholder="Produto ou Categoria"
+            className={ styles.inputS }
           />
-        </label>
-
-        <button
-          data-testid="query-button"
-          onClick={ handleSearchButton }
-          className={ styles.btn }
-        >
-          Buscar
-        </button>
-
-        {productList.length < 1 && (
-          <h2 data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </h2>
-        )}
-
+          <button
+            data-testid="query-button"
+            onClick={ handleSearchButton }
+            type="button"
+            className={ styles.btnS }
+          >
+            Buscar
+          </button>
+        </div>
         <div>
-          {productList.length > 0 && (
-            <ul>
-              {productList.map((product, index) => (
-                <Cards key={ index } product={ product } />
-              ))}
-            </ul>
+          {productList.length < 1 && (
+            <h2 data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </h2>
           )}
+
+          <div>
+            {productList.length > 0 && (
+              <ul>
+                {productList.map((product, index) => (
+                  <Cards key={ index } product={ product } />
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>
