@@ -24,7 +24,7 @@ function Cards({ product }: { product: CardType }) {
     const cartItem = {
       id: product.id,
       title: product.title,
-      permalink: product.permalink,
+      // permalink: product.permalink,
       price: product.price,
       thumbnail: product.thumbnail,
       quantity: 1,
@@ -46,22 +46,23 @@ function Cards({ product }: { product: CardType }) {
   }
 
   return (
-
-    <div className={ styles.container } key={ product.id } data-testid="product">
-      <img src={ product.thumbnail } alt={ product.title } />
-      <p className={ styles.ttle }>{product.title}</p>
-      <p className={ styles.info }>{product.id}</p>
-      <p className={ styles.info }>{product.permalink}</p>
-      <p className={ styles.info }>{product.price}</p>
-      <button
-        onClick={ handleClick }
-        data-testid="product-detail-link"
-      >
-        clique aqui
-      </button>
-      <button onClick={ handleAddToCart } data-testid="product-add-to-cart">
-        Adicionar ao Carrinho
-      </button>
+    <div>
+      <div className={ styles.cards } key={ product.id } data-testid="product">
+        <img src={ product.thumbnail } alt={ product.title } />
+        <p className={ styles.ttle }>{product.title}</p>
+        {/* <p className={ styles.info }>{product.id}</p> */}
+        {/* <p className={ styles.info }>{product.permalink}</p> */}
+        <p className={ styles.info }>{product.price}</p>
+        <button
+          onClick={ handleClick }
+          data-testid="product-detail-link"
+        >
+          clique aqui
+        </button>
+        <button onClick={ handleAddToCart } data-testid="product-add-to-cart">
+          Adicionar ao Carrinho
+        </button>
+      </div>
     </div>
 
   );

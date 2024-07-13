@@ -1,22 +1,24 @@
 /* Card.css */
 
 /* Estilos para o contêiner do card */
-.container {
+.cards {
   align-items: flex-start; /* Alinhe os cards no topo */
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  height: 300px;
-  justify-content: space-between; /* Distribua o espaço entre os cards */
-  margin: 16px;
-  padding: 16px;
+  display: flex;
+  flex-flow: column wrap; /* Distribua os cards em várias linhas */
+  height: auto;
+  justify-content: center; /* Distribua o espaço entre os cards */
+  margin: 15px;
+  padding: 5px;
   width: 300px;
 }
 
 .card {
   background-color: white;
   border: 1px solid #ccc;
+  border-radius: 5px;
   margin-bottom: 16px; /* Espaçamento inferior entre os cards */
   padding: 16px;
   text-align: center;
@@ -28,7 +30,7 @@
 
 /* Estilos para o título do produto */
 .title {
-  font-size: 18px;
+  font-size: 0.8rem;
   font-weight: 700;
   margin-bottom: 8px;
 }

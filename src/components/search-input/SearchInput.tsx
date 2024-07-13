@@ -100,7 +100,7 @@ function SearchInput() {
             onChange={ (event) => setSearchInput(event.target.value) }
             data-testid="query-input"
             type="text"
-            placeholder="Produto ou Categoria"
+            placeholder="  Produto ou Categoria"
             className={ styles.inputS }
           />
           <button
@@ -121,7 +121,7 @@ function SearchInput() {
 
           <div>
             {productList.length > 0 && (
-              <ul>
+              <ul className={ styles.productsContainer }>
                 {productList.map((product, index) => (
                   <Cards key={ index } product={ product } />
                 ))}
